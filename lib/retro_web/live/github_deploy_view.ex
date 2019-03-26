@@ -9,14 +9,17 @@ defmodule RetroWeb.GithubDeployView do
           <button phx-click="github_deploy">Deploy to Github</button>
         </div>
         <%= @deploy_step %>
+        <br>
+        <%= @id %>
       </div>
     </div>
     """
   end
 
   def mount(_session, socket) do
-    IO.inspect(socket, label: "MOUNT")
-    {:ok, assign(socket, deploy_step: "Ready!")}
+    id = Nanoid.generate(4, "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+    {:ok, assign(socket, deploy_step: "Ready!", id: id)}
   end
 
   def handle_event("github_deploy", _value, socket) do

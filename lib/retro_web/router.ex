@@ -19,6 +19,9 @@ defmodule RetroWeb.Router do
 
     get "/", PageController, :index
 
+    get "/retro", PageController, :retro_graph
+    get "/retro_form", PageController, :retro_form
+
     get "/root/:id", PageController, :root
   end
 

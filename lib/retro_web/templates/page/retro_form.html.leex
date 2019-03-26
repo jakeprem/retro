@@ -1,0 +1,21 @@
+<div class="">
+    <%= if @session_id == nil do %>
+    <form phx-submit="join_session">
+        <label for="session_id">Session Code</label>
+        <input type="text" id="session_id" name="session_id">
+        <input type="submit">
+    </form>
+    <% else %>
+    <h2>Submitting to Retro: <%= @session_id %></h2>
+    <span>BV: <%= @current_values.bv %></span>
+    <span>Hap: <%= @current_values.hap %></span>
+    <form phx-submit="send">
+        <label for="bv">Business Value</label>
+        <input type="number" id="bv" name="bv">
+        <br>
+        <label for="hap">Happiness</label>
+        <input type="number" id="hap" name="hap">
+        <input type="submit">
+    </form>
+    <% end %>
+</div>
