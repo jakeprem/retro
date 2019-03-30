@@ -12,21 +12,19 @@ defmodule RetroWeb.PageController do
   end
 
   def retro_graph(conn, _params) do
-    {server_id, conn} = get_or_put_id_in_session(conn, :server_id) 
+    {server_id, conn} = get_or_put_id_in_session(conn, :server_id)
     id = Nanoid.generate(4, "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
     LiveView.Controller.live_render(conn, RetroWeb.RetroGraphView,
       session: %{
         server_id: server_id,
-        id: id
+        session_id: id
       }
     )
   end
 
   def retro_form(conn, _params) do
     {id, conn} = get_or_put_id_in_session(conn, :client_id)
-
-    IO.inspect(id, label: "CLIENT ID FROM SESSION")
 
     LiveView.Controller.live_render(conn, RetroWeb.RetroFormView, session: %{client_id: id})
   end

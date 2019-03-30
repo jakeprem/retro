@@ -1,5 +1,9 @@
 <div class="">
     <%= if @session_id == nil do %>
+    <h3>Current Retros<h3>
+    <%= for retro <- Map.keys(@current_retros) do %>
+    <button phx-click="join_session" value="<%= retro %>"><%= retro %></button><br>
+    <% end %>
     <form phx-submit="join_session">
         <label for="session_id">Session Code</label>
         <input type="text" id="session_id" name="session_id">

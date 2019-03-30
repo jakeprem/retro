@@ -8,10 +8,8 @@ defmodule Retro.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Start the endpoint when the application starts
-      RetroWeb.Endpoint
-      # Starts a worker by calling: Retro.Worker.start_link(arg)
-      # {Retro.Worker, arg},
+      RetroWeb.Endpoint,
+      RetroWeb.Presence
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
